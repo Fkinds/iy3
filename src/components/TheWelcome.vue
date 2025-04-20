@@ -19,7 +19,5 @@ onMounted(() =>
 </script>
 
 <template>
-  aaa
   <List :List="result" />
-  bbb
 </template>
