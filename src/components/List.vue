@@ -1,16 +1,16 @@
 <script setup>
 defineProps({
-  List: Object,
+  projectList: Object,
 })
 </script>
 
 <template>
   <v-list>
     <v-list-item
-      v-for="(item, index) in List"
+      v-for="(project, index) in projectList"
       :key="index"
-      :title="item.title"
-      :to="`/${item.id}`"
+      :title="project.title"
+      :to="`/projects/${project.id}`"
       class="ellipsis-text"
     />
   </v-list>

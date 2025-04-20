@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import show from '@/views/Show.vue'
+import PblList from '@/views/PblList.vue'
+import PblShow from '@/views/PblShow.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,9 +20,15 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
     {
-      path: '/:id',
-      name: 'show',
-      component: show,
+      path: '/projects/:projectId',
+      name: 'pblIndex',
+      component: PblList,
+      props: true,
+    },
+    {
+      path: '/projects/:projectId/pbl/:pblId',
+      name: 'pblDetail',
+      component: PblShow,
       props: true,
     },
   ],
