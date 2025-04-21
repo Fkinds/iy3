@@ -54,10 +54,41 @@ const PblList = [
   },
 ]
 
+const spList = [
+  {
+    id: 1,
+    user_name: 'test1',
+    user_sp: 'test1',
+    register_data: '2021-08-30 10:00:00',
+    backlog_id: 1,
+    sp_count: 1,
+  },
+  {
+    id: 2,
+    user_name: 'test2',
+    user_sp: 'test2',
+    register_data: '2021-09-1 10:00:00',
+    backlog_id: 1,
+    sp_count: 1,
+  },
+  {
+    id: 3,
+    user_name: 'test3',
+    user_sp: 'test3',
+    register_data: '2021-09-4 10:00:00',
+    backlog_id: 1,
+    sp_count: 1,
+  },
+]
+
 // モックサーバー初期化
 const mock = new MockAdapter(axios, { delayResponse: 500 }) // 500ms 遅延
 
 // GETリクエストをモック
 mock.onGet('https://bookers/api/books').reply(200, BookList)
 
+mock.onGet('https://localhost:8080/api/pbls/view_offered_sp/${backlogId}').reply(200, spList)
+
 mock.onGet('https://localhost:8080/api/pbls/view_backlog_all/${id}').reply(200, PblList)
+
+mock.onPost('https://localhost:8080/api/pbls/register_offered_sp').reply(200)
